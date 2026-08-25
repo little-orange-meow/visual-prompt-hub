@@ -17,3 +17,14 @@ Follow these rules for every image-generation task in this workspace:
 6. Keep reference images only in `1-原图参考/`. Do not leave final generated images in temporary or generic `output/` folders after archiving.
 7. Never overwrite an existing reference, batch folder, prompt record, or generated image. Create a new timestamped batch for every new request.
 8. Load connection settings from the workspace `.env` before generation. Treat `OPENAI_BASE_URL`/`OPENAI_API_KEY` as the standard equivalents of `baseurl`/`apikey`, and never print secret values.
+
+## Facial Identity Preservation
+
+These rules are mandatory for every generation involving a referenced person:
+
+1. Always use the person's original image from `1-原图参考/` as the authoritative facial identity reference for every generation request. Never use a previously generated image as the identity source.
+2. Facial identity has higher priority than hairstyle, expression, makeup, pose, clothing, camera angle, lens distortion, aesthetic style, ethnicity descriptors, or influencer/idol styling.
+3. Preserve the original facial landmarks and proportions: eye shape and spacing, eyebrows, nose bridge and tip, lips, cheeks, jawline, face width, skin tone, and natural age appearance.
+4. Do not beautify, slim the face, enlarge the eyes, create a V-line jaw, change ethnicity or age, or replace the face with a generic influencer, model, or idol face.
+5. For difficult angles, wide-angle perspectives, or major hairstyle changes, provide an additional close facial detail derived from the same original reference when supported by the generation workflow. The original full image must remain the primary reference.
+6. Visually compare every generated face with the original reference before delivery. If the identity has noticeably drifted, reject and regenerate the result; do not archive or present it as final.
