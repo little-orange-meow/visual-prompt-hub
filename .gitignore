@@ -1,0 +1,12 @@
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# macOS metadata
+.DS_Store
+**/.DS_Store
+
+# Temporary image-generation files
+tmp/
+output/
